@@ -8,11 +8,15 @@ _stack = ORIGIN(ram) + LENGTH(ram);
 
 SECTIONS
 {
-	.text : ALIGN(4)
-	{
-		KEEP(*(ivt))
-		*(.text*)
-		. = ALIGN(4);
-		_etext = .;
-	} > flash
+  .ivt :
+  {
+    . = ALIGN(4);
+    KEEP(*(.ivt))
+    . = ALIGN(4);
+  } > flash
+
+  .text :
+  {
+
+  } > flash
 }
